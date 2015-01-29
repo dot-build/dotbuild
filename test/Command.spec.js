@@ -1,6 +1,6 @@
 var assert = require('assert');
 var Command = require('Command');
-var Mediator = require('Mediator');
+var EventAggregator = require('EventAggregator');
 
 describe('Command', function() {
 	describe('#constructor(String name, Function task)', function() {
@@ -23,11 +23,11 @@ describe('Command', function() {
 
 			var instance = new Command(commandName, task);
 
-			Mediator.on('command.run:before', function(commandName) {
+			EventAggregator.on('command.run:before', function(commandName) {
 				preHook = commandName;
 			});
 
-			Mediator.on('command.run', function(commandName) {
+			EventAggregator.on('command.run', function(commandName) {
 				postHook = commandName;
 			});
 
@@ -37,7 +37,7 @@ describe('Command', function() {
 			assert(commandExecuted === true, 'command not executed');
 			assert(postHook === commandName, 'after hook not executed');
 
-			Mediator.off('command.beforerun command.run');
+			EventAggregator.off('command.beforerun command.run');
 		});
 
 		it('should stop if the `command.run:before` hook returns false', function() {
@@ -52,7 +52,7 @@ describe('Command', function() {
 			}
 
 			var command = new Command('test', task);
-			Mediator.on('command.beforerun', preHook);
+			EventAggregator.on('command.beforerun', preHook);
 
 			assert(commandExecuted === false, 'pre hook is not canceling the command');
 		});

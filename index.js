@@ -4,9 +4,12 @@ var VERSION = require('./package.json').version;
 // hb.value('DependencyGraph', require('dependency-graph').DepGraph);
 // hb.value('VERSION', VERSION);
 
+var exportedClasses = ['Config', 'Command', 'EventAggregator', 'ModuleController', 'ProjectController'];
+
 module.exports = {
-	VERSION: VERSION,
-	Config: require('./lib/Config'),
-	Command: require('./lib/Command'),
-	Mediator: require('./lib/Mediator')
+	VERSION: VERSION
 };
+
+exportedClasses.forEach(function(name) {
+	module.exports[name] = require('./lib/' + name);
+});

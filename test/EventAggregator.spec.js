@@ -1,16 +1,16 @@
 var assert = require('assert');
-var Mediator = require('Mediator');
+var EventAggregator = require('EventAggregator');
 
-describe('Mediator', function() {
+describe('EventAggregator', function() {
 	it('should be an EventEmitter used for global communication through events', function() {
 		var foo = false;
 
-		Mediator.on('foo', function() {
+		EventAggregator.on('foo', function() {
 			foo = true;
 		});
 
-		Mediator.emit('foo');
-		Mediator.off('foo');
+		EventAggregator.emit('foo');
+		EventAggregator.off('foo');
 
 		assert(foo === true);
 	});

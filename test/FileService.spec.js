@@ -12,9 +12,15 @@ describe('FileService', function() {
 		});
 	});
 
-	describe('#getModuleFiles(ModuleInfo moduleInfo)', function() {
-		it('should return an array of files inside a module path, without specs', function() {
+	// describe('#getScripts(ModuleInfo moduleInfo)', function() {
+	// 	it('should return an array of js files inside a module path, excluding specs', function() {
 
-		});
-	});
+	// 	});
+	// });
+
+	// describe('#getStyles(ModuleInfo moduleInfo)', function() {
+	// 	it('should return an array of scss files inside a module path', function() {
+
+	// 	});
+	// });
 });
